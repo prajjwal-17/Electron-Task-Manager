@@ -5,7 +5,7 @@
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "types": ["vite/client"],
+    "types": ["vite/client","./types"], //d.ts for global types  //not adding .d.ts since it is automatically inferred by typescript
     "skipLibCheck": true,
 
     /* Bundler mode */
