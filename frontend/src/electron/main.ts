@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron';
 import path from 'path';
 import { isDev } from './util.js';
+import { pollResources } from './resourceManager.js';
 
 type test = string;
 
@@ -12,5 +13,7 @@ app.on("ready",()=>{
     else{
           mainWindow.loadFile(path.join(app.getAppPath(),'/dist-react/index.html')) // this will get current app path(where app is running from)
     }
+
+    pollResources()
 
 })
