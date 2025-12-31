@@ -2,11 +2,15 @@ import { app, BrowserWindow } from 'electron';
 import path from 'path';
 import { isDev } from './util.js';
 import { pollResources } from './resourceManager.js';
+import { getPreloadPath } from './pathResolver.js';
 
-type test = string;
 
 app.on("ready",()=>{
-    const mainWindow = new BrowserWindow({});
+    const mainWindow = new BrowserWindow({
+        webPreferences : {
+           preload :  getPreloadPath(),   // we can use nodeIntegrations but it is a security vulnerability becuase then our browser will be able to interact with nodejs
+        }
+    });
     if(isDev()){
         mainWindow.loadURL('http://localhost:5123');
     }
