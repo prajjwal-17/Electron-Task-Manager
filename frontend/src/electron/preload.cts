@@ -9,5 +9,5 @@ electron.contextBridge.exposeInMainWorld("electron",{
         })
         
     },
-    getStaticData : ()=> console.log("static")
+    getStaticData : ()=> electron.ipcRenderer.invoke('getStaticData'), //invoke expects a response (resolves with a response)
 })      //to bridge process data between main window and electron process
