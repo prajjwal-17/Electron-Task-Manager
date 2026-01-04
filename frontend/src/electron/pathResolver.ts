@@ -10,3 +10,7 @@ export function getPreloadPath(){
    )
 }
 //this will basically figure out how to use path based on whether it is dev or prod since path change on basis od dev or prod
+
+export function getUIPath(){
+   return path.join(app.getAppPath(),'/dist-react/index.html')
+}

@@ -2,7 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import { ipcMainHandle, isDev } from './util.js';
 import { getStaticData, pollResources } from './resourceManager.js';
-import { getPreloadPath } from './pathResolver.js';
+import { getPreloadPath, getUIPath } from './pathResolver.js';
 
 
 app.on("ready",()=>{
@@ -15,7 +15,7 @@ app.on("ready",()=>{
         mainWindow.loadURL('http://localhost:5123');
     }
     else{
-          mainWindow.loadFile(path.join(app.getAppPath(),'/dist-react/index.html')) // this will get current app path(where app is running from)
+          mainWindow.loadFile(getUIPath()) // this will get current app path(where app is running from)
     }
 
     pollResources(mainWindow)
